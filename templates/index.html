@@ -1,0 +1,24 @@
+{{template "header.html"}}
+
+<!-- add dynamic content here that are part of our api... -->
+
+<div class="container">
+    <div class="row">
+        <!-- looping over the list of videos -->
+        {{range .videos}}
+        <div class="col-md-4">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe width="350" height="250" src="{{.URL}}" frameborder="0" allow="acclerometer ; autoplay;
+                    encrypted-media; gyroscope;picture-in-picture" allowfullscreen>
+                </iframe>
+                <p class="card-text">
+                    <h3>{{.Title}}</h3>
+                    <p>{{.Description}}</p>
+                </p>
+            </div>
+        </div>
+        {{end}}
+    </div>
+</div>
+
+{{template "footer.html"}}
