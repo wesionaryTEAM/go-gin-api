@@ -1,26 +1,21 @@
 package service
 
-// create login interface ... return bool
+// create login interface ... return boolpackage service
 
 type LoginService interface {
-	Login(username string, password string) bool
+	LoginUser(email string, password string) bool
 }
-
-type loginService struct {
-	ValidUsername string
+type loginInformation struct {
+	ValidEmail    string
 	ValidPassword string
 }
 
-func NewLoginService() LoginService {
-	return &loginService{
-		ValidUsername: "Dinesh",
-		ValidPassword: "Password",
+func StaticLoginService() LoginService {
+	return &loginInformation{
+		ValidEmail:    "dinesh.silwal@wesionary.team",
+		ValidPassword: "nothing",
 	}
 }
-
-// implement method signature...
-
-func (service *loginService) Login(username string, password string) bool {
-	return service.ValidUsername == username &&
-		service.ValidPassword == password
+func (service *loginInformation) LoginUser(email string, password string) bool {
+	return service.ValidEmail == email && service.ValidPassword == password
 }
