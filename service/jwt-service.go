@@ -8,7 +8,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 )
 
-//jwt service
+//JWT service ...
 type JWTService interface {
 	GenerateToken(email string, isUser bool) string
 	ValidateToken(token string) (*jwt.Token, error)
@@ -16,7 +16,7 @@ type JWTService interface {
 type authCustomClaims struct {
 	Name string `json:"name"`
 	User bool   `json:"user"`
-	//embed claims
+	//embed claims...
 	jwt.StandardClaims
 }
 
@@ -40,6 +40,7 @@ func getSecretKey() string {
 	return secret
 }
 
+// set custom and standard claim...
 func (service *jwtServices) GenerateToken(email string, isUser bool) string {
 	claims := &authCustomClaims{
 		email,
@@ -50,8 +51,11 @@ func (service *jwtServices) GenerateToken(email string, isUser bool) string {
 			IssuedAt:  time.Now().Unix(),
 		},
 	}
+
+	// create token using claims...
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
+	// Generate encoded token using  secret signing key ...
 	t, err := token.SignedString([]byte(service.secretKey))
 	if err != nil {
 		panic(err)
