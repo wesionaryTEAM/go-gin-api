@@ -2,6 +2,7 @@ package middlewares
 
 import (
 	"fmt"
+	"go-gin-api/service"
 	"net/http"
 
 	"github.com/dgrijalva/jwt-go"
