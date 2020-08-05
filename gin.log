@@ -13,5 +13,12 @@
 [GIN-debug] GET    /api/videos               --> main.main.func1 (5 handlers)
 [GIN-debug] POST   /api/videos               --> main.main.func2 (5 handlers)
 [GIN-debug] GET    /view/videos              --> go-gin-api/controller.VideoController.ShowAll-fm (5 handlers)
+[GIN-debug] POST   /login                    --> main.main.func3 (5 handlers)
 [GIN-debug] Listening and serving HTTP on :8080
-::1 - [31 Jul 20 16:21 +0545] GET /view/videos 401 65.76µs::1 - [31 Jul 20 16:21 +0545] GET /view/videos 401 7.633µs::1 - [31 Jul 20 16:21 +0545] GET /view/videos 401 4.869µs::1 - [31 Jul 20 16:21 +0545] GET /view/videos 401 35.707µs::1 - [31 Jul 20 16:21 +0545] GET /view/videos 401 69.242µs::1 - [31 Jul 20 16:21 +0545] GET /view/videos 401 18.473µs::1 - [31 Jul 20 16:21 +0545] GET /view/videos 401 10.891µs::1 - [31 Jul 20 16:21 +0545] GET /view/videos 401 9.97µs::1 - [31 Jul 20 16:21 +0545] GET /view/videos 401 14.582µs::1 - [31 Jul 20 16:24 +0545] GET /view/videos 401 4.649µs::1 - [31 Jul 20 16:24 +0545] GET /view/videos 401 10.125µs::1 - [31 Jul 20 16:26 +0545] POST /api/videos 200 565.954µs::1 - [31 Jul 20 16:27 +0545] POST /api/videos 200 306.737µs
+[GIN-debug] redirecting request 301: /api/videos --> /api/videos
+::1 - [05 Aug 20 14:36 +0545] GET /api/videos 200 297.495µs[GIN-debug] redirecting request 307: /api/videos --> /api/videos
+::1 - [05 Aug 20 14:40 +0545] POST /api/videos 200 575.6µs::1 - [05 Aug 20 14:41 +0545] GET /api/videos 200 573.18µs::1 - [05 Aug 20 14:42 +0545] GET /api/videos 200 312.039µs::1 - [05 Aug 20 14:42 +0545] GET /api/videos 200 527.485µs[GIN-debug] redirecting request 307: /login --> /login?
+::1 - [05 Aug 20 14:45 +0545] POST /login 200 272.359µs::1 - [05 Aug 20 14:47 +0545] GET /login/ 404 151.003µs[GIN-debug] redirecting request 301: /api/videos --> /api/videos
+::1 - [05 Aug 20 14:48 +0545] GET /api/videos 200 152.324µs[GIN-debug] redirecting request 307: /api/videos --> /api/videos
+::1 - [05 Aug 20 14:48 +0545] POST /api/videos 400 174.091µs[GIN-debug] redirecting request 307: /api/videos --> /api/videos
+::1 - [05 Aug 20 14:49 +0545] POST /api/videos 400 183.794µs

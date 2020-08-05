@@ -27,6 +27,11 @@ func setUpLogOutput() {
 }
 
 func main() {
+
+	var loginService service.LoginService = service.StaticLoginService()
+	var jwtService service.JWTService = service.JWTAuthService()
+	var loginController controller.LoginController = controller.LoginHandler(loginService, jwtService)
+
 	setUpLogOutput()
 	r := gin.New()
 
@@ -36,10 +41,22 @@ func main() {
 	//load html templates...
 	r.LoadHTMLGlob("templates/*.html")
 
+	// Login Endpoint : Authentication + Token Creation ...
+	r.POST("/login", func(c *gin.Context) {
+		token := loginController.Login(c)
+		if token != "" {
+			c.JSON(http.StatusOK, gin.H{
+				"token": token,
+			})
+		} else {
+			c.JSON(http.StatusUnauthorized, nil)
+		}
+	})
+
 	r.Use(gin.Recovery(), middlewares.Logger(), middlewares.BasicAuth(), gindump.Dump())
 
 	// Group Api endpoints...
-	apiGroupRoutes := r.Group("/api")
+	apiGroupRoutes := r.Group("/api", middlewares.AuthorizeJWT())
 	{
 
 		apiGroupRoutes.GET("/videos", func(c *gin.Context) {
@@ -64,5 +81,6 @@ func main() {
 	{
 		viewRoutes.GET("/videos", videoController.ShowAll)
 	}
+
 	r.Run(":8080") // listen and serve on 0.0.0.0:8080
 }

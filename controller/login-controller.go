@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"go-gin-api/dto"
 	"go-gin-api/service"
 
 	"github.com/gin-gonic/gin"
