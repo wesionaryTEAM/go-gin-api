@@ -6,16 +6,16 @@ type LoginService interface {
 	LoginUser(email string, password string) bool
 }
 type loginInformation struct {
-	ValidEmail    string
-	ValidPassword string
+	email    string
+	password string
 }
 
 func StaticLoginService() LoginService {
 	return &loginInformation{
-		ValidEmail:    "dinesh.silwal@wesionary.team",
-		ValidPassword: "nothing",
+		email:    "dinesh.silwal@wesionary.team",
+		password: "nothing",
 	}
 }
 func (service *loginInformation) LoginUser(email string, password string) bool {
-	return service.ValidEmail == email && service.ValidPassword == password
+	return service.email == email && service.password == password
 }
